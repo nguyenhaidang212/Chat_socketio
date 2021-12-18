@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demo Chat</title>
+    <script src="jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="xuly.js"></script>
+    <link rel="stylesheet" type="text/css" href="layout.css" />
+    </head>
+  <body>
+
+    <div id="wrapper">
+
+    <div id="LoginForm">
+      <h3>Tên của bạn là ?</h3>
+      <input type="text" id="txtUsername" />
+      <input type="button" value="Đăng nhập" id="btnRegister" />
+
+      </div>
+    <div id="ChatForm">
+    <input type="text" id="txtRoom" placeholder="tên phòng..."/>
+
+    <input type="button" id="btnTaoRoom" value="Tạo hoặc tìm phòng">
+    <input type="button" id="btnLeave" value="Rời phòng" />
+
+      <div id="left">
+        <div id="userBox">
+          <div id="boxTitle">Trực tuyến</div>
+          <div id="boxContent"></div>
+        </div>
+
+
+
+
+      </div>
+
+
+      <div id="right">
+          <div id="sayHI">
+            Xao chìn <span id="currentUser">Teo</span>
+            <input type="button" id="btnLogout" value="Logout"></div>
+            <div id="Server">Kênh chung </div>
+            <div id="ListMessages"></div>
+            <div id="typingNotify"></div>
+            <input type="text" id="txtMessage" placeholder="Message"/>
+            <input type="button" id="btnSendMessage" value="ChatServer" />
+
+            <div id="roomHienTai">Không trong phòng nào</div>
+            <div id="Group"></div>
+            <div id="typingNotifyroom"></div>
+            <input type="text" id="txtMessageRoom" placeholder="Message"/>
+            <input type="button" id="btnSendMessageRoom" value="ChatRoom" />
+
+            <div id="Rieng">Chat riêng </div>
+            <div id="userChat"></div>
+            <div id="typingNotifyUser"></div>
+            <input type="text" id="txtMessageUser" placeholder="Message"/>
+            <input type="text" id="txtUserToChat" placeholder="Username|ID" />
+            <input type="button" id="btnSendMessageUser" value="ChatUser" />
+
+
+            </div>
+        </div>
+      </div>
+  </body>
+</html>

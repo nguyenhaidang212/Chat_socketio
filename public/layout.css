@@ -1,0 +1,42 @@
+body{background-color: #fcfafa}
+#wrapper{width 600px margin: auto}
+
+#txtUsername{background-color: transparent; border: solid 1px black}
+
+
+#left, #right:{min-height: 300px}
+#left{width: 30%; float:left; margin}
+#right{width: 70%; float:right; background-color: #e9ebf0}
+.user{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+#boxTitle{border:  solid 1px black; padding:5px; text-align: center; font-weight: bold}
+#dsroom{border: solid 1px black; padding: 5px; text-align: center; font-weight: bold}
+#boxContent{border: solid 1px black;; padding: 5px; text-align: center; font-weight: bold}
+#sayHI{text-align: right}
+#txtMessage{background-color: white; width: 600px; border: none;  margin-bottom: 15px}
+#txtMessageRoom{background-color: white; width: 600px; border: none;  margin-bottom: 15px}
+#txtMessageUser{background-color: white; width: 600px; border: none;  margin-bottom: 15px}
+#ListMessages{border: solid 1px black; height: 200px; background-color: #fcfafa}
+#Group{border: solid 1px black; height: 200px; background-color: #fcfafa}
+#userChat{border: solid 1px black; height: 200px; background-color: #fcfafa}
+#txt{background-color: transparent;border: solid 1px black}
+
+#Server{text-align: left;font-weight: bold}
+#roomHienTai{border:  none; padding:none ; text-align: left; font-weight: bold}
+#Rieng{border:  none; padding:none ; text-align: left; font-weight: bold}
+#Group{
+  font-size: 15px
+}
+#ListMessages{
+  font-size: 15px
+}
+#userBox{
+  background-color:#ebdb34
+}
+#roomBox{
+  background-color:#3498eb
+}
+#txtUserToChat{width: 250px; border: none;}
