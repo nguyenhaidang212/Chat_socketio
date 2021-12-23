@@ -1,4 +1,4 @@
-var socket = io("http://localhost:3000");
+var socket = io("https://chat-129144.herokuapp.com");
 var id ="";
 var usernameID ="";
 socket.on("send-id", function(data){
