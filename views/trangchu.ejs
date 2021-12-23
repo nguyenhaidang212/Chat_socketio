@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Demo Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="jquery.js"></script>
-    <script src="https://chat-haidang212.herokuapp.com/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="xuly.js"></script>
     <link rel="stylesheet" type="text/css" href="layout.css" />
     </head>
@@ -13,21 +14,20 @@
     <div id="wrapper">
 
     <div id="LoginForm">
-      <h3>Tên của bạn là ?</h3>
-      <input type="text" id="txtUsername" />
-      <input type="button" value="Đăng nhập" id="btnRegister" />
+      <h3>What is your name ?</h3>
+      <input type="text" class="form-control" id="txtUsername" />
+      <input type="button" class="btn btn-primary" value="Login" id="btnRegister" />
 
       </div>
     <div id="ChatForm">
-    <input type="text" id="txtRoom" placeholder="tên phòng..."/>
 
-    <input type="button" id="btnTaoRoom" value="Tạo hoặc tìm phòng">
-    <input type="button" id="btnLeave" value="Rời phòng" />
 
       <div id="left">
         <div id="userBox">
-          <div id="boxTitle">Trực tuyến</div>
-          <div id="boxContent"></div>
+          <div id="boxTitle">Onlines</div>
+          <div id="boxContent">
+
+          </div>
         </div>
 
 
@@ -37,27 +37,42 @@
 
 
       <div id="right">
+
           <div id="sayHI">
-            Xao chìn <span id="currentUser">Teo</span>
-            <input type="button" id="btnLogout" value="Logout"></div>
-            <div id="Server">Kênh chung </div>
+            Welcome <span id="currentUser">Teo</span>
+            <input type="button" id="btnLogout"class="btn btn-danger" value="Logout"></div>
+            <div id="Server">General </div>
             <div id="ListMessages"></div>
             <div id="typingNotify"></div>
-            <input type="text" id="txtMessage" placeholder="Message"/>
-            <input type="button" id="btnSendMessage" value="ChatServer" />
+            <div class="display-flex">
+              <input type="text"class="form-control" id="txtMessage" placeholder="Message"/>
+              <input type="button" id="btnSendMessage" class="btn btn-secondary" value="ChatServer" />
+            </div>
 
-            <div id="roomHienTai">Không trong phòng nào</div>
+            <div class="roomControl display-flex">
+              <input type="text"class="form-control" id="txtRoom" placeholder="Room name..."/>
+              <input type="button" class="btn btn-primary" id="btnTaoRoom" value="Join room">
+              <input type="button" class="btn btn-danger display-none" id="btnLeave" value="Leave room" />
+            </div>
+
+            <div id="roomHienTai">Chat room: None</div>
             <div id="Group"></div>
             <div id="typingNotifyroom"></div>
-            <input type="text" id="txtMessageRoom" placeholder="Message"/>
-            <input type="button" id="btnSendMessageRoom" value="ChatRoom" />
+            <div class="display-flex">
+              <input type="text"class="form-control" id="txtMessageRoom" placeholder="Message"/>
+              <input type="button" id="btnSendMessageRoom"class="btn btn-secondary" value="ChatRoom" />
+            </div>
 
-            <div id="Rieng">Chat riêng </div>
+
+            <div id="Rieng">Private Message </div>
             <div id="userChat"></div>
             <div id="typingNotifyUser"></div>
-            <input type="text" id="txtMessageUser" placeholder="Message"/>
-            <input type="text" id="txtUserToChat" placeholder="Username|ID" />
-            <input type="button" id="btnSendMessageUser" value="ChatUser" />
+            <div class="display-flex">
+              <input type="text"class="form-control" id="txtMessageUser" placeholder="Message"/>
+              <input type="button" id="btnSendMessageUser"class="btn btn-secondary" value="ChatUser" />
+              <input type="text"class="form-control" id="txtUserToChat" placeholder="Username|ID" readonly/>
+            </div>
+
 
 
             </div>

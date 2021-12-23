@@ -1,4 +1,4 @@
-var socket = io("https://chat-haidang212.herokuapp.com");
+var socket = io("http://localhost:3000");
 var id ="";
 var usernameID ="";
 socket.on("send-id", function(data){
@@ -12,8 +12,33 @@ socket.on("server-send-dki-thatbai", function(){
 socket.on("sever-send-danhsach-Users", function(data){
   $("#boxContent").html("");
   data.forEach(function(i){
-    $("#boxContent").append("<div class='user'>" + i + "</div>");
+    let splitUserId = i.split("|");
+    const receivedUsername = splitUserId[0];
+    const receivedId = splitUserId[1];
+    if(receivedUsername!='' && receivedId!=''){
+      $("#boxContent").append(`<div class="user">
+        <div class="username">`+receivedUsername+`</div>
+        <div class="userId">ID: `+receivedId+`</div>
+      </div>`);
+    }
+
   });
+  var myFunction =  function() {
+
+
+        let usernameClick = this.getElementsByClassName("username")[0].innerHTML;
+        let userIdClick = this.getElementsByClassName("userId")[0].innerHTML;
+
+        let splitUserId = userIdClick.split(": ");
+        const userIdMerged = usernameClick + "|"+splitUserId[1];
+        $('#txtUserToChat').val(userIdMerged)
+
+};
+  var elements = document.getElementsByClassName("user");
+
+  for(let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', myFunction, false);
+    }
 });
 
 socket.on("server-send-dki-thanhcong", function(data){
@@ -32,15 +57,29 @@ socket.on("server-send-rooms", function(data){
 });
 
 socket.on("server-send-room-socket", function(data){
-  $("#roomHienTai").html("Đang trong phòng: " + data);
+  $("#roomHienTai").html("Chat room: " + data);
 });
 
+var onClickUsername = function(){
+  $('#txtUserToChat').val(this.innerHTML);
+}
+
+var updateChatClick = function(){
+  var elements = document.getElementsByClassName("usernamechat");
+
+  for(let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', onClickUsername, false);
+    }
+}
+
 socket.on("server-chat", function(data){
-  $("#Group").append("<div class='ms'>" + data.un + ": " + data.nd + "</div>");
+  $("#Group").append("<div class='ms'>" + "<div class='usernamechat'>"+data.un+"</div>" + ": " + data.nd + "</div>");
+  updateChatClick();
 });
 
 socket.on("server-send-message", function(data){
-  $("#ListMessages").append("<div class='ms'>" + data.un + ": " + data.nd + "</div>");
+  $("#ListMessages").append("<div class='ms'>" + "<div class='usernamechat'>"+data.un+"</div>" + ": " + data.nd + "</div>");
+  updateChatClick();
 });
 
 socket.on("stoptyping", function(data) {
@@ -73,7 +112,10 @@ socket.on("send-private-msg-failed", function(){
 })
 
 socket.on("receive-private-msg", function(data){
-  $("#userChat").append("<div class='ms'>"+"From " + data.sender +  ": " + data.msg + "</div>");
+  let sender=data.sender;
+  $("#userChat").append("<div class='ms'>"+"From "+ "<div class='usernamechat'>"+sender+"</div>" +  ": " + data.msg + "</div>");
+
+  updateChatClick();
 })
 $(document).ready(function(){
   $("#LoginForm").show();
@@ -101,7 +143,7 @@ $("#txtMessage").focusout(function() {
       socket.emit("client-send-Username", {username: username, id: id});
     }
     else {
-      alert("Username không được để trống");
+      alert("Username cannot be empty");
     }
 
   });
@@ -110,7 +152,7 @@ $("#txtMessage").focusout(function() {
     let room=$("#txtRoom").val();
 
     if(room.length >10){
-      alert("Tên phòng tối đa 10 ký tự");
+      alert("Room name up to 10 characters");
       $("#txtRoom").val("");
     }
     else if(room!=""){
@@ -118,10 +160,12 @@ $("#txtMessage").focusout(function() {
         room:room
       });
       $("#txtRoom").val("");
-      alert("Tạo phòng thành công");
+
     }else{
       alert("Tên hoặc mật khẩu không đúng");
     }
+    $("#btnTaoRoom").addClass("display-none");
+    $("#btnLeave").removeClass("display-none");
 });
 
 $("#btnSendMessage").click(function(){
@@ -151,19 +195,26 @@ $("#btnSendMessageRoom").click(function(){
 
 
   $("#btnLeave").click(function(){
-    socket.emit("user-leave", $("#roomHienTai").html());
-    $("#roomHienTai").html("Không trong phòng nào ");
+    let roomHtml =  $("#roomHienTai").html();
+    roomHtml = roomHtml.split(": ");
+    roomToSend = roomHtml[1];
+
+    socket.emit("user-leave",roomToSend);
+    $("#roomHienTai").html("Chat room: None");
     $("#Group").empty();
+    $("#btnTaoRoom").removeClass("display-none");
+    $("#btnLeave").addClass("display-none");
   });
 
   $("#btnSendMessageUser").click(function(){
     let user = $("#txtUserToChat").val();
     let msg = $("#txtMessageUser").val();
     if(user != "" && msg!=""){
-      $("#userChat").append("<div class='ms'>" + "To "+ user +  ": " + msg + "</div>");
+      $("#userChat").append("<div class='ms'>" + "To "+  "<div class='usernamechat'>"+user+"</div>" +  ": " + msg + "</div>");
       socket.emit("send-private-msg", {user: user, msg:msg, sender: usernameID});
-      $("#txtUserToChat").val("");
+
       $("#txtMessageUser").val("");
     }
   })
+
 });

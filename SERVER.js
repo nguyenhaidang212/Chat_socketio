@@ -6,7 +6,9 @@ app.set("views", "./views");
 
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
-server.listen(process.env.PORT || 3000);
+//server.listen(process.env.PORT || 3000);
+server.listen(3000);
+
 
 var mangUsers=[""];
 

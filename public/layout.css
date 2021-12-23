@@ -1,42 +1,86 @@
 body{background-color: #fcfafa}
 #wrapper{width 600px margin: auto}
 
-#txtUsername{background-color: transparent; border: solid 1px black}
-
-
-#left, #right:{min-height: 300px}
-#left{width: 30%; float:left; margin}
-#right{width: 70%; float:right; background-color: #e9ebf0}
-.user{
+#txtUsername{background-color: transparent; border: solid 1px black; width: 20%; margin-left: 40%; margin-bottom: 10px}
+#LoginForm{
   text-align: center;
-  font-size: 30px;
-  font-weight: bold;
+
+  margin-top: 10%;
 }
-#boxTitle{border:  solid 1px black; padding:5px; text-align: center; font-weight: bold}
+
+.display-none{
+  display: none;
+}
+#left, #right:{min-height: 300px;}
+#left{width: 20%; float:left;margin-right: :20px;background-color: white}
+#right{width: 77%; float:right; background-color: #dbdbdb}
+.user{
+  margin: 5px;
+  font-weight: bold;
+  background-color: #0a3f40;
+  border: solid 1px black;
+
+}
+.ms{
+  display: flex;
+}
+.usernamechat{
+    margin-left: 5px;
+}
+.usernamechat:hover{
+  cursor: pointer;
+
+}
+.user:hover{
+  cursor: pointer;
+}
+.username{
+  font-size: 20px;
+  text-align: left;
+  margin-left: 20px;
+}
+.userId{
+  font-size: 15px;
+  text-align: left;
+  margin-left: 20px;
+}
+#boxTitle{border:  solid 1px black; padding:5px; text-align: center; font-weight: bold; background-color: #0bdde0; color: white}
 #dsroom{border: solid 1px black; padding: 5px; text-align: center; font-weight: bold}
-#boxContent{border: solid 1px black;; padding: 5px; text-align: center; font-weight: bold}
+#boxContent{border:  solid 1px #9da6a6; padding: 5px; text-align: center; font-weight: bold;color: white; background-color: white}
 #sayHI{text-align: right}
+#txtRoom{background-color: white; width: 600px; border: none;}
 #txtMessage{background-color: white; width: 600px; border: none;  margin-bottom: 15px}
 #txtMessageRoom{background-color: white; width: 600px; border: none;  margin-bottom: 15px}
 #txtMessageUser{background-color: white; width: 600px; border: none;  margin-bottom: 15px}
 #ListMessages{border: solid 1px black; height: 200px; background-color: #fcfafa}
 #Group{border: solid 1px black; height: 200px; background-color: #fcfafa}
-#userChat{border: solid 1px black; height: 200px; background-color: #fcfafa}
+#userChat{border: solid 1px black; height: 200px; background-color: #fcfafa;   overflow-y: auto;}
 #txt{background-color: transparent;border: solid 1px black}
-
+#btnSendMessageRoom, #btnSendMessageUser, #btnSendMessage{margin-bottom: 15px}
 #Server{text-align: left;font-weight: bold}
 #roomHienTai{border:  none; padding:none ; text-align: left; font-weight: bold}
 #Rieng{border:  none; padding:none ; text-align: left; font-weight: bold}
 #Group{
-  font-size: 15px
+  font-size: 15px;
+  overflow-y: auto;
 }
+
 #ListMessages{
-  font-size: 15px
+  font-size: 15px;
+    overflow-y: auto;
 }
 #userBox{
-  background-color:#ebdb34
+  background-color:#ebdb34;
+
+}
+#boxContent{
+  height: 600px;
+  overflow-y: auto;
 }
 #roomBox{
   background-color:#3498eb
 }
-#txtUserToChat{width: 250px; border: none;}
+#txtUserToChat{width: 300px; border: none; margin-bottom: 15px}
+.display-flex{
+  display: flex;
+}
