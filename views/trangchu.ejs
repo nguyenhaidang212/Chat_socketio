@@ -1,82 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Demo Chat</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="jquery.js"></script>
-    <script src="https://chat-129144.herokuapp.com/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="xuly.js"></script>
     <link rel="stylesheet" type="text/css" href="layout.css" />
-    </head>
-  <body>
+</head>
 
+<body>
     <div id="wrapper">
+        <div id="LoginForm">
+            <h3>What is your name ?</h3>
+            <input type="text" class="form-control" id="txtUsername" />
+            <input type="button" class="btn btn-primary" value="Login" id="btnRegister" />
 
-    <div id="LoginForm">
-      <h3>What is your name ?</h3>
-      <input type="text" class="form-control" id="txtUsername" />
-      <input type="button" class="btn btn-primary" value="Login" id="btnRegister" />
-
-      </div>
-    <div id="ChatForm">
-
-
-      <div id="left">
-        <div id="userBox">
-          <div id="boxTitle">Onlines</div>
-          <div id="boxContent">
-
-          </div>
         </div>
+        <div id="ChatForm">
+            <div id="left">
+                <div id="userBox">
+                    <div id="boxTitle">Onlines</div>
+                    <div id="boxContent">
 
+                    </div>
+                </div>
 
-
-
-      </div>
-
-
-      <div id="right">
-
-          <div id="sayHI">
-            Welcome <span id="currentUser">Teo</span>
-            <input type="button" id="btnLogout"class="btn btn-danger" value="Logout"></div>
-            <div id="Server">General </div>
-            <div id="ListMessages"></div>
-            <div id="typingNotify"></div>
-            <div class="display-flex">
-              <input type="text"class="form-control" id="txtMessage" placeholder="Message"/>
-              <input type="button" id="btnSendMessage" class="btn btn-secondary" value="ChatServer" />
             </div>
+            <div id="right">
+                <div id="sayHI">
+                    Welcome <span id="currentUser"></span>
+                    <input type="button" id="btnLogout" class="btn btn-danger" value="Logout"></div>
+                <div id="Server">General </div>
+                <div id="ListMessages"></div>
 
-            <div class="roomControl display-flex">
-              <input type="text"class="form-control" id="txtRoom" placeholder="Room name..."/>
-              <input type="button" class="btn btn-primary" id="btnTaoRoom" value="Join room">
-              <input type="button" class="btn btn-danger display-none" id="btnLeave" value="Leave room" />
-            </div>
+                <div class="display-flex">
+                    <input type="text" class="form-control" id="txtMessage" placeholder="Message" />
+                    <input type="button" id="btnSendMessage" class="btn btn-secondary" value="ChatServer" />
+                </div>
 
-            <div id="roomHienTai">Chat room: None</div>
-            <div id="Group"></div>
-            <div id="typingNotifyroom"></div>
-            <div class="display-flex">
-              <input type="text"class="form-control" id="txtMessageRoom" placeholder="Message"/>
-              <input type="button" id="btnSendMessageRoom"class="btn btn-secondary" value="ChatRoom" />
-            </div>
+                <div class="roomControl display-flex">
+                    <input type="text" class="form-control" id="txtRoom" placeholder="Room name..." />
+                    <input type="button" class="btn btn-primary" id="btnTaoRoom" value="Join room">
+                    <input type="button" class="btn btn-danger display-none" id="btnLeave" value="Leave room" />
+                </div>
 
+                <div id="roomHienTai">Chat room: None</div>
+                <div id="Group"></div>
 
-            <div id="Rieng">Private Message </div>
-            <div id="userChat"></div>
-            <div id="typingNotifyUser"></div>
-            <div class="display-flex">
-              <input type="text"class="form-control" id="txtMessageUser" placeholder="Message"/>
-              <input type="button" id="btnSendMessageUser"class="btn btn-secondary" value="ChatUser" />
-              <input type="text"class="form-control" id="txtUserToChat" placeholder="Username|ID" readonly/>
-            </div>
+                <div class="display-flex">
+                    <input type="text" class="form-control" id="txtMessageRoom" placeholder="Message" />
+                    <input type="button" id="btnSendMessageRoom" class="btn btn-secondary" value="ChatRoom" />
+                </div>
 
 
+                <div id="Rieng">Private Message </div>
+                <div id="userChat"></div>
+
+                <div class="display-flex">
+                    <input type="text" class="form-control" id="txtMessageUser" placeholder="Message" />
+                    <input type="button" id="btnSendMessageUser" class="btn btn-secondary" value="ChatUser" />
+                    <input type="text" class="form-control" id="txtUserToChat" placeholder="Username|ID" readonly/>
+                    <input type="button" id="btnClearMessageUser" class="btn btn-danger" value="Clear" />
+                </div>
 
             </div>
         </div>
-      </div>
-  </body>
+    </div>
+</body>
+
 </html>
